@@ -2161,43 +2161,45 @@ SUPABASE_FUNCTION_URL = os.environ.get(
     "SUPABASE_FUNCTION_URL",
     "https://egpyhfzatabyftwajoad.supabase.co/functions/v1/fgm-fortaleza-register",
 )
+
 SUPABASE_API_KEY = os.environ.get(
     "SUPABASE_API_KEY",
     os.environ.get("FGM_FORTALEZA_API_KEY", "GGbPIn53S1IH1F4i6uBS5Ftoh1fNYk49"),
 )
 
-def normalize_phone_number(phone):
-    digits = re.sub(r"[^\d]", "", phone or "")
-    return f"55{digits}" if len(digits) == 11 else digits
 
 def send_registration_to_supabase(form_data):
-    phone = normalize_phone_number(form_data.get("whatsapp", ""))
     data_inicio = form_data.get("data_inicio", "")
-    horario     = form_data.get("horario", "")
-    inicioaula  = f"{data_inicio} {horario}".strip() if data_inicio else horario
+    horario = form_data.get("horario", "")
+    inicioaula = f"{data_inicio} {horario}".strip() if data_inicio else horario
+
     payload = {
-        "name":           form_data.get("nome", ""),
-        "phone":          phone,
-        "curso":          form_data.get("curso", ""),
-        "turma":          form_data.get("turma", ""),
-        "nomelocal":      form_data.get("local", ""),
-        "endereço":       form_data.get("endereco_curso", ""),
-        "inicioaula":     inicioaula,
+        "name": form_data.get("nome", ""),
+        "phone": form_data.get("whatsapp", ""),  # enviado cru, normalização feita no servidor
+        "curso": form_data.get("curso", ""),
+        "turma": form_data.get("turma", ""),
+        "nomelocal": form_data.get("local", ""),
+        "endereço": form_data.get("endereco_curso", ""),
+        "inicioaula": inicioaula,
     }
+
     headers = {
-        "Content-Type":  "application/json",
-        "Accept":        "application/json",
-        "x-api-key":     SUPABASE_API_KEY,
-        "Authorization": f"Bearer {SUPABASE_API_KEY}",
-        "api_key":       SUPABASE_API_KEY,
+        "Content-Type": "application/json",
+        "x-api-key": SUPABASE_API_KEY,
     }
+
     response = requests.post(
-        SUPABASE_FUNCTION_URL, headers=headers, json=payload, timeout=10
+        SUPABASE_FUNCTION_URL,
+        headers=headers,
+        json=payload,
+        timeout=10,
     )
+
     if not response.ok:
         raise RuntimeError(
             f"Supabase retornou {response.status_code}: {response.text[:500]}"
         )
+
     return response
 
 if __name__ == "__main__":
