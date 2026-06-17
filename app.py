@@ -49,9 +49,9 @@ COURSE_CATALOG = [
 # 3. HORÁRIOS
 # =============================================================================
 SCHEDULE_OPTIONS = {
-    "1": {"dias_aula": "De quarta até sexta", "horario": "09h até 16h"},
-    "2": {"dias_aula": "De quarta até sexta", "horario": "13h até 18h"},
-    "3": {"dias_aula": "Terça e Quinta",      "horario": "09h até 11h"},
+    "1": {"dias_aula": "Quarta a Terça", "horario": "13h até 18h"},  # DSBR01 - atualizado
+    "2": {"dias_aula": "Quarta a Terça", "horario": "13h até 17h"},  # MNCR01 - atualizado
+    "3": {"dias_aula": "Terça e Quinta", "horario": "09h até 11h"},  # MARK01 - inalterado
 }
 
 # =============================================================================
@@ -63,9 +63,9 @@ START_DATE_OPTIONS = {
     "3": "25/06/2026",
 }
 END_DATE_OPTIONS = {
-    "1": "19/06/2026",
-    "2": "19/06/2026",
-    "3": "23/07/2026",
+    "1": "23/06/2026",  # DSBR01 - atualizado (era 19)
+    "2": "23/06/2026",  # MNCR01 - atualizado (era 19)
+    "3": "23/07/2026",  # MARK01 - inalterado
 }
 
 # =============================================================================
@@ -762,7 +762,7 @@ TEMPLATE_WIZARD = """\
     <div class="wizard-page">
 
         <!-- Progress -->
-        <div class="wizard-progress" style="display:none;">
+        <div class="wizard-progress">
             <div class="wizard-track">
                 <div class="wizard-fill" id="wizard-fill"></div>
             </div>
@@ -819,7 +819,6 @@ TEMPLATE_WIZARD = """\
                                             <div class="benefit-slide">Networking e troca de experiências</div>
                                             <div class="benefit-slide">Suporte para desenvolver sua carreira profissional</div>
                                             <div class="benefit-slide">Estrutura e recursos adequados para cada formação</div>
-                                            <div class="benefit-slide">Suporte para desenvolver sua carreira profissional</div>
                                             <div class="benefit-slide">Qualificação para quem deseja crescer e conquistar novas oportunidades</div>
                                         </div>
                                         <div class="benefits-controls">
@@ -2184,7 +2183,6 @@ def send_registration_to_supabase(form_data):
         "nomelocal":      form_data.get("local", ""),
         "endereço":       form_data.get("endereco_curso", ""),
         "inicioaula":     inicioaula,
-        # legacy fields kept for compatibility
         "local":          form_data.get("local", ""),
         "dia_semana":     form_data.get("dias_aula", ""),
         "dias_semana":    form_data.get("dias_aula", ""),
