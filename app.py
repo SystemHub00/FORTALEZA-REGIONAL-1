@@ -2183,12 +2183,6 @@ def send_registration_to_supabase(form_data):
         "nomelocal":      form_data.get("local", ""),
         "endereço":       form_data.get("endereco_curso", ""),
         "inicioaula":     inicioaula,
-        "local":          form_data.get("local", ""),
-        "dia_semana":     form_data.get("dias_aula", ""),
-        "dias_semana":    form_data.get("dias_aula", ""),
-        "data_inicio":    data_inicio,
-        "data_inscricao": datetime.utcnow().isoformat() + "Z",
-        "horario":        horario,
     }
     headers = {
         "Content-Type":  "application/json",
