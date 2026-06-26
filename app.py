@@ -47,6 +47,7 @@ COURSE_CATALOG = [
     {"id": "3", "nome": "26/MARK 01 - MARKETING DIGITAL"},
     {"id": "4", "nome": "26/DSBR 007 - DESIGNER DE SOBRANCELHAS"},
     {"id": "5", "nome": "26/MNCR 004 - MANICURE"},
+    {"id": "6", "nome": "26/SOMD 001 - SOCIAL MEDIA"},
 ]
 
 # =============================================================================
@@ -57,6 +58,7 @@ SCHEDULE_OPTIONS = {
     "2": {"dias_aula": "Quarta a Terça", "horario": "13h até 17h"},
     "3": {"dias_aula": "Terça e Quinta", "horario": "09h até 11h"},
     "4": {"dias_aula": "Quarta a Terça", "horario": "18h até 21h"},
+    "5": {"dias_aula": "Quarta e Quinta", "horario": "18:30h até 20:30h"},
 }
 
 # =============================================================================
@@ -67,12 +69,15 @@ START_DATE_OPTIONS = {
     "2": "17/06/2026",
     "3": "25/06/2026",
     "4": "24/06/2026",
+    "5": "02/07/2026",
 }
+
 END_DATE_OPTIONS = {
     "1": "23/06/2026",
     "2": "23/06/2026",
     "3": "23/07/2026",
     "4": "30/06/2026",
+    "5": "29/07/2026",
 }
 
 # =============================================================================
@@ -90,38 +95,66 @@ ADDRESS_OPTIONS = {
 # =============================================================================
 TURMA_OPTIONS = [
     {
-        "id": "1", "curso_id": "1", "local_id": "1",
+        "id": "1",
+        "curso_id": "1",
+        "local_id": "1",
         "turma_codigo": "26/DSBR-01",
-        "agenda_id": "1", "periodo_id": "1",
-        "encerramento_id": "1", "endereco_id": "1",
+        "agenda_id": "1",
+        "periodo_id": "1",
+        "encerramento_id": "1",
+        "endereco_id": "1",
     },
     {
-        "id": "2", "curso_id": "2", "local_id": "2",
+        "id": "2",
+        "curso_id": "2",
+        "local_id": "2",
         "turma_codigo": "26/MNCR-01",
-        "agenda_id": "2", "periodo_id": "2",
-        "encerramento_id": "2", "endereco_id": "2",
+        "agenda_id": "2",
+        "periodo_id": "2",
+        "encerramento_id": "2",
+        "endereco_id": "2",
     },
     {
-        "id": "3", "curso_id": "3", "local_id": "1",
+        "id": "3",
+        "curso_id": "3",
+        "local_id": "1",
         "turma_codigo": "26/MARK-01",
-        "agenda_id": "3", "periodo_id": "3",
-        "encerramento_id": "3", "endereco_id": "1",
+        "agenda_id": "3",
+        "periodo_id": "3",
+        "encerramento_id": "3",
+        "endereco_id": "1",
     },
-    # ── NOVAS TURMAS ──────────────────────────────────────────────────────────
     {
-        "id": "4", "curso_id": "4", "local_id": "3",
+        "id": "4",
+        "curso_id": "4",
+        "local_id": "3",
         "turma_codigo": "26/DSBR-007",
-        "agenda_id": "4", "periodo_id": "4",
-        "encerramento_id": "4", "endereco_id": "3",
+        "agenda_id": "4",
+        "periodo_id": "4",
+        "encerramento_id": "4",
+        "endereco_id": "3",
     },
     {
-        "id": "5", "curso_id": "5", "local_id": "4",
+        "id": "5",
+        "curso_id": "5",
+        "local_id": "4",
         "turma_codigo": "26/MNCR-004",
-        "agenda_id": "4", "periodo_id": "4",
-        "encerramento_id": "4", "endereco_id": "4",
+        "agenda_id": "4",
+        "periodo_id": "4",
+        "encerramento_id": "4",
+        "endereco_id": "4",
+    },
+    {
+        "id": "6",
+        "curso_id": "6",
+        "local_id": "3",
+        "turma_codigo": "26/SOMD-001",
+        "agenda_id": "5",
+        "periodo_id": "5",
+        "encerramento_id": "5",
+        "endereco_id": "3",
     },
 ]
-
 
 # =============================================================================
 # 8. FUNÇÕES AUXILIARES
