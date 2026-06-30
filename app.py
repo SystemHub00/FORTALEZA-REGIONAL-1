@@ -69,7 +69,7 @@ START_DATE_OPTIONS = {
     "2": "17/06/2026",
     "3": "25/06/2026",
     "4": "24/06/2026",
-    "5": "02/07/2026",
+    "5": "08/07/2026",
 }
 
 END_DATE_OPTIONS = {
@@ -77,7 +77,7 @@ END_DATE_OPTIONS = {
     "2": "23/06/2026",
     "3": "23/07/2026",
     "4": "30/06/2026",
-    "5": "29/07/2026",
+    "5": "30/07/2026",
 }
 
 # =============================================================================
@@ -352,7 +352,7 @@ TEMPLATE_WIZARD = """\
         @media (max-width: 640px) {
             html, body { width: 100% !important; max-width: 100% !important; overflow-x: hidden !important; }
             body * { min-width: 0; }
-            body { overflow-x: hidden; }
+            body  { overflow-x: hidden; }
             .main-header { padding: 8px 12px; }
             .header-logos { gap: 12px; }
             .header-divider { height: 36px; }
@@ -665,19 +665,18 @@ TEMPLATE_WIZARD = """\
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            var stepOrder      = ['index', 'dados', 'escolher', 'revisao'];
-            var progressByStep = { index: 25, dados: 45, escolher: 70, revisao: 90 };
-            var form          = document.getElementById('wizard-form');
-            var fill          = document.getElementById('wizard-fill');
-            var startStep     = document.body.dataset.startStep || 'index';
-            var panels        = Array.from(document.querySelectorAll('[data-step]'));
-            var labels        = Array.from(document.querySelectorAll('[data-step-label]'));
-            var reviewTargets = Array.from(document.querySelectorAll('[data-review]'));
-            var benefitsSliders = Array.from(document.querySelectorAll('[data-benefits-slider]'));
-            var courseCatalog = {{ course_catalog|tojson }};
-            var courseOptions = {{ course_options|tojson }};
-            var localOptions  = {{ local_options|tojson }};
-            var courseOptionsById = Object.fromEntries(courseOptions.map(function(o){ return [String(o.id), o]; }));
+            var stepOrder=['index','dados','escolher','revisao'];
+            var progressByStep={index:25,dados:45,escolher:70,revisao:90};
+            var form=document.getElementById('wizard-form'),fill=document.getElementById('wizard-fill');
+            var startStep=document.body.dataset.startStep||'index';
+            var panels=Array.from(document.querySelectorAll('[data-step]'));
+            var labels=Array.from(document.querySelectorAll('[data-step-label]'));
+            var reviewTargets=Array.from(document.querySelectorAll('[data-review]'));
+            var benefitsSliders=Array.from(document.querySelectorAll('[data-benefits-slider]'));
+            var courseCatalog={{ course_catalog|tojson }};
+            var courseOptions={{ course_options|tojson }};
+            var localOptions={{ local_options|tojson }};
+            var courseOptionsById=Object.fromEntries(courseOptions.map(function(o){return[String(o.id),o];}));
             var nomeInput=document.getElementById('nome'),generoInput=document.getElementById('genero'),cpfInput=document.getElementById('cpf'),nascimentoInput=document.getElementById('nascimento'),whatsappInput=document.getElementById('whatsapp'),cepInput=document.getElementById('cep'),bairroInput=document.getElementById('bairro'),emailInput=document.getElementById('email'),confirmaDadosInput=document.getElementById('confirma_dados');
             var courseSelect=document.getElementById('curso_id'),localSelectEl=document.getElementById('local_id_select'),opcaoSelectEl=document.getElementById('opcao_id_select'),localGroup=document.getElementById('local-group'),turmaGroup=document.getElementById('turma-group'),opcaoIdInput=document.getElementById('opcao_id'),localIdInput=document.getElementById('local_id'),localInput=document.getElementById('local'),localDisplay=document.getElementById('local_display'),cursoInput=document.getElementById('curso'),turmaInput=document.getElementById('turma'),diasAulaInput=document.getElementById('dias_aula'),horarioInput=document.getElementById('horario'),dataInicioInput=document.getElementById('data_inicio'),encerramentoInput=document.getElementById('encerramento'),enderecoInput=document.getElementById('endereco_curso'),btnCopiarEndereco=document.getElementById('btn-copiar-endereco');
             var infoLocalGroup=document.getElementById('info-local-group'),infoDiasGroup=document.getElementById('info-dias-group'),infoHorarioGroup=document.getElementById('info-horario-group'),infoInicioGroup=document.getElementById('info-inicio-group'),infoEncGroup=document.getElementById('info-enc-group'),infoEndGroup=document.getElementById('info-endereco-group');
